@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Martin</title>
+  </head>
+  <body style="margin: 0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-org-chart@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <div id="root"></div>
+    <script>
+      const color = '#FFFFFF';
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      const filename = (typeof params.filename === 'undefined') ? 'org-chart.csv' : params.filename;
+
+      const buttonContent = ({ node, state }) => {
+        return `<div style="px;color:#716E7B;border-radius:5px;padding:4px;font-size:10px;margin:auto auto;background-color:white;border: 1px solid #E4E2E9"> <span style="font-size:9px">${
+        node.children
+            ? `<i class="fas fa-angle-up"></i>`
+            : `<i class="fas fa-angle-down"></i>`
+        }</span> ${node.data._directSubordinates}  </div>`;
+      }
+
+      const linkUpdate = (d, i, arr) => {
+        console.log(d.data)
+        d3.select(this)
+        .attr('stroke', (d) =>
+          d.data._upToTheRootHighlighted ? '#152785' : '#E4E2E9'
+        )
+        .attr('stroke-width', (d) =>
+          d.data._upToTheRootHighlighted ? 5 : 1
+        );
+        if (d.data._upToTheRootHighlighted) {
+          d3.select(this).raise();
+        }
+      }
+
+      const getProfilePic = (d, i, arr, state) => {
+        if (d.data.imageUrl !== "") {
+          return `
+          <div style="background-color:${color};position:absolute;margin-top:-25px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
+          <img src=" ${
+            d.data.imageUrl
+          }" style="position:absolute;margin-top:-25px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" />
+          `
+        }
+      return ""
+      }
+
+      const getSubortinates = (d, i, arr, state) => {
+        if (d.data._totalSubordinates > 0) {
+          return `
+        <div style="color:#08011E;position:absolute;right:20px;top:17px;font-size:10px;"> Oversees: ${
+            d.data._totalSubordinates
+        } </div>
+        `
+        }
+        return ""
+      }
+
+      const getHeadline = (d, i, arr, state) => {
+        if (d.data._totalSubordinates > 0) {
+          return `
+          <div style="color:#716E7B;margin-left:20px;margin-top:3px;font-size:10px;"> ${
+            d.data.area
+          } </div>
+          `
+        }
+        return `
+        <div style="color:#716E7B;margin-left:20px;margin-top:3px;font-size:10px;"> ${
+          d.data.positionName
+      } </div>
+      `
+  }
+
+  const maxWidth = "180px"
+
+  const getBar = () => {
+    return `
+    <div style="width: ${maxWidth}; height: 5px; background-color: #F5F0F0; border-radius: 10px; margin: auto; margin-left: 20px; position: absolute; top: 50%; transform: translateY(-50%); -webkit-transform: translateY(-50%)">
+      <div>
+      </div>
+    </div>
+    `
+  }
+
+  const nodeContent = (d, i, arr, state) => {
+
+return `
+
+  <div style="background-color: #9999; height: 80px; box-sizing: border-box; border-radius: 10px;">
+    <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
+        ${getProfilePic(d, i, arr, state)}
+        ${getSubortinates(d, i, arr, state)}
+        <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:19px; width: 150px;"> ${
+            d.data.name
+        } </div>
+        ${getBar()}
+    </div>
+  </div>
+`;
+}
+
+var chart;
+d3.csv(
+    filename
+).then(data => {
+    chart = new d3.OrgChart()
+        .container('.chart-container')
+        .data(data)
+        .nodeHeight((d) => 85)
+        .nodeWidth((d) => 260)
+        .childrenMargin((d) => 50)
+        .compactMarginBetween((d) => 25)
+        .compactMarginPair((d) => 50)
+        .neightbourMargin((a, b) => 25)
+        .siblingsMargin((d) => 25)
+        .buttonContent(buttonContent)
+        //.linkUpdate(linkUpdate)
+        .nodeContent(nodeContent)
+        .render();
+});
+    </script>
+</body>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+      -->
+</html>
