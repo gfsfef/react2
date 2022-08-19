@@ -78,7 +78,7 @@
       const getSubortinates = (d, i, arr, state) => {
         if (d.data._totalSubordinates > 0) {
           return `
-        <div style="color:#08011E;position:absolute;right:20px;top:17px;font-size:10px;"> Oversees: ${
+        <div style="color:#08011E;position:absolute;right:20px;top:14px;font-size:10px;"> Oversees: ${
             d.data._totalSubordinates
         } </div>
         `
@@ -102,10 +102,11 @@
   }
 
   const maxWidth = "180px"
+  const perc = 0.5
 
   const getBar = () => {
     return `
-    <div style="width: ${maxWidth}; height: 5px; background-color: #F5F0F0; border-radius: 10px; margin: auto; margin-left: 20px; position: absolute; top: 50%; transform: translateY(-50%); -webkit-transform: translateY(-50%)">
+    <div style="width: ${maxWidth}; height: 5px; background-color: #F5F0F0; border-radius: 10px; margin-left: 19px; margin-top: 40px; margin-bottom: 20px">
       <div>
       </div>
     </div>
@@ -120,10 +121,15 @@ return `
     <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
         ${getProfilePic(d, i, arr, state)}
         ${getSubortinates(d, i, arr, state)}
-        <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:19px; width: 150px;"> ${
+        <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
             d.data.name
         } </div>
-        ${getBar()}
+        <div style="display: flex;">
+          ${getBar()}
+          <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
+            <p>${perc * 100}%</p>
+          </div>
+        </div>
     </div>
   </div>
 `;
