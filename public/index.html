@@ -63,15 +63,13 @@
         }
       }
 
-      const getProfilePic = (d, i, arr, state) => {
-        if (d.data.imageUrl !== "") {
+      const getTypeCard = (d, i, arr, state) => {
+        if (d.data._type !== "") {
           return `
-          <div style="background-color:${color};position:absolute;margin-top:-25px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" ></div>
-          <img src=" ${
-            d.data.imageUrl
-          }" style="position:absolute;margin-top:-25px;margin-left:${15}px;border-radius:100px;width:50px;height:50px;" />
+          <p>${(d.data._type)}</p>
           `
         }
+
       return ""
       }
 
@@ -113,27 +111,103 @@
     `
   }
 
-  const nodeContent = (d, i, arr, state) => {
-
-return `
-
-  <div style="background-color: #9999; height: 80px; box-sizing: border-box; border-radius: 10px;">
-    <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
-        ${getProfilePic(d, i, arr, state)}
-        ${getSubortinates(d, i, arr, state)}
-        <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
-            d.data.name
-        } </div>
-        <div style="display: flex;">
-          ${getBar()}
-          <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
-            <p>${perc * 100}%</p>
+const nodeContent = (d, i, arr, state) => {
+  if (d.data.tipo == 0) {
+          return `
+          <div style="background-color: #9999; height: 80px; box-sizing: border-box; border-radius: 10px;">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
+          ${getSubortinates(d, i, arr, state)}
+          <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
+             d.data.name
+          } </div>
+          <div style="display: flex; margin-left: 19px; margin-top: 10px; justify-content: space-between; margin-right: 40px; height: 16px; ">
+              <p>Qtde de Objetivos</p>
+              <p style="font-weight: bold;">${d.data.objetivos}</p>
+          </div>
+          <div style="display: flex; margin-left: 19px; justify-content: space-between; margin-right: 40px; margin-bottom: 20px">
+              <p>Qtde de Projetos</p>
+              <p style="font-weight: bold;">${d.data.projetos}</p>
           </div>
         </div>
-    </div>
-  </div>
-`;
+      </div>
+          `
+        }
+  if (d.data.tipo == 1){
+    return `
+    <div style="background-color: #ff0000; height: 80px; box-sizing: border-box; border-radius: 10px;">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
+          ${getSubortinates(d, i, arr, state)}
+          <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
+             d.data.name
+          } </div>
+          <div style="display: flex;">
+           ${getBar()}
+           <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
+             <p>${perc * 100}%</p>
+           </div>
+           </div>
+        </div>
+      </div>
+  `}
+  if (d.data.tipo == 2){
+    return `
+    <div style="background-color: #ffff0f;; height: 80px; box-sizing: border-box; border-radius: 10px;">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
+          ${getSubortinates(d, i, arr, state)}
+          <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
+             d.data.name
+          } </div>
+          <div style="display: flex;">
+           ${getBar()}
+           <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
+             <p>${perc * 100}%</p>
+           </div>
+           </div>
+        </div>
+      </div>
+  `}
+  if (d.data.tipo == 3){
+    return `
+    <div style="background-color: #0000ff;; height: 80px; box-sizing: border-box; border-radius: 10px;">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:155px;border-radius:10px;border: 1px solid #E4E2E9">
+          ${getSubortinates(d, i, arr, state)}
+          <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
+             d.data.name
+          } </div>
+          <div style="display: flex;">
+           ${getBar()}
+           <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
+             <p>${perc * 100}%</p>
+           </div>
+           </div>
+        </div>
+      </div>
+  `}
 }
+
+//  const nodeContent = (d, i, arr, state) => {
+
+//  return `
+
+//    <div style="background-color: #9999; height: 80px; box-sizing: border-box; border-radius: 10px;">
+//      <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
+//          ${getTypeCard(d, i, arr, state)}
+//          ${getSubortinates(d, i, arr, state)}
+//          <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 140px; height: 10px"> ${
+//              d.data.name
+//          } </div>
+//          <div style="display: flex;">
+//            ${getBar()}
+//            <div style="margin-top: 23px; margin-left: 15px; font-family: 'sans-serif';">
+//              <p>${perc * 100}%</p>
+//            </div>
+//          </div>
+//      </div>
+//    </div>
+//  `;
+//  }
+
+
 
 var chart;
 d3.csv(
@@ -142,7 +216,7 @@ d3.csv(
     chart = new d3.OrgChart()
         .container('.chart-container')
         .data(data)
-        .nodeHeight((d) => 85)
+        .nodeHeight((d) => 97.55)
         .nodeWidth((d) => 260)
         .childrenMargin((d) => 50)
         .compactMarginBetween((d) => 25)

@@ -99,7 +99,7 @@ export const MainDiv = styled("div") ({
         justifyContent: 'row'
     },
     '& .svg-chart-container' : {
-        height: '520px',
+        height: '460px',
         border: 'none',
     },
     '& .letter' : {

@@ -1,0 +1,6 @@
+"name","objetivos","projetos","prioridade","atingimento","programa","data_med","prazo","kr","base","target","actual","id","parentId"
+"BIOMETRIA TECH",2,3,1,"0.8",0,0
+"Aumentar em 30% a seguranca do aplicativo",1,0,"1.0",1,0,1
+"Programa SeguroPicPay",2,0,"1.0","Longo",2,1,2
+"Refazer a Biometria",3,"1.0",8/8/2022,"Medio","indice de Fraudes",20,8,8,3,2,3
+"Adaptar Login",4,"0.2",8/10/2022,"Curto","% de Senhas Fracas",15,2,4,4,2,3
