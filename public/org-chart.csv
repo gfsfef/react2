@@ -1,7 +1,34 @@
-name,objetivos,projetos,prioridade,atingimento,programa,data_med,prazo,kr,base,target,actual,id,parentId,size,tipo
-PICPAY,,,,,,,,,,,,0,,,
-BIOMETRIA TECH,2,3,1,0.8,,,,,,,,1,0,,0
-Aumentar em 30% a segurança do aplicativo,,1,0,1.0,,,,,,,,2,1,,1
-Programa SeguroPicPay,,2,0,1.0,,,Longo,,,,,3,2,,2
-Refazer a Biometria,,,3,1.0,,8/8/2022,Médio,Índice de Fraudes,20,8,8,4,3,,3
-Adaptar Login,,,4,0.2,,8/10/2022,Curto,% de Senhas Fracas,15,2,4,4,3,,3
+id,parentId,Area,Programa,ObjetivoArea,Projeto,Fase,Prioridade,Previsao,Resultado_Esperado,tipo
+0,,PicPay,,Não Preenchido,,,,,,0,0,21,,,
+1,0,Foundation Engineering,,Não Preenchido,,,,,,0,0,5,,,
+2,0,Infraestrutura,,Não Preenchido,,,,,,0,0,2,,,
+3,0,Security Experience,,Não Preenchido,,,,,,0,0,4,,,
+4,0,Security,,Não Preenchido,,,,,,0,0,9,,,
+5,0,CGN,,Não Preenchido,,,,,,0,0,1,,,
+11,1,,Nova stack de observabilidade,Não Preenchido,,,,,,1,0,5,,,
+21,2,,FinOps,Não Preenchido,,,,,,1,0,2,,,
+31,3,,Plataformização de segurança & prevenção,Não Preenchido,,,,,,1,0,4,,,
+41,4,,Reduzir Risco,Não Preenchido,,,,,,1,0,9,,,
+51,5,,Não Preenchido,Não Preenchido,,,,,,1,0,1,,,
+551,51,,,Não Preenchido,Plano de contingência para indisponibilidade de serviços críticos,Plano de execução,0,31/12/2006,,3,0,,,,
+112,11,,,Não Preenchido,Reduce New Relic data volume,Em andamento,1,16/09/2022,Redução X% dos dados do New Relic,3,0,,,,
+113,11,,,Não Preenchido,Migrate observability stack to open source tools: Logs and Traces,Em andamento,1,TBD,Redução 45% dos dados do New Relic,3,0,,,,
+114,11,,,Não Preenchido,Migrate observability stack to open source tools: Metrics and Alerts,Backlog,1,TBD,Redução 46% dos dados do New Relic,3,0,,,,
+115,11,,,Não Preenchido,Migrate observability stack to open source tools: Mobile Events,Backlog,1,TBD,Redução 9% dos dados do New Relic,3,0,,,,
+116,11,,,Não Preenchido,Produtividade Mobile,,,,,3,0,,,,
+221,21,,,Não Preenchido,Break-even,Em andamento,0,31/12/2022,Custo total em nossa linha de tecnologia de 28MBRL.,3,0,,,,
+222,21,,,Não Preenchido,Visibilidade de Custos,Backlog,1,,,3,0,,,,
+331,31,,,Não Preenchido,Refatoração Login de acesso PJ (peça core de login + integração PJ),Done,1,31/12/2022,"Ganho de eficiencia financeira, resiliência, escalabilidade e continuidade dos negócios",3,0,,,,
+332,31,,,Não Preenchido,Refatoração VIB (Validação de identidade e Biometria),Em andamento,1,31/12/2022,"Ganho de eficiencia financeira, resiliência, escalabilidade e continuidade dos negócios",3,0,,,,
+333,31,,,Não Preenchido,"Refatoração gestão de dispositivos (mobile, sms token, e-mail token e outros)",Em andamento,1,31/3/2023,"Ganho de resiliência, escalabilidade e facilidade de uso pelos produtos",3,0,,,,
+334,31,,,Não Preenchido,Orquestrador de Segurança,Em andamento,1,TBD,Camada de orquestração dos elementos que compõem o ciclo de prevenção a fraudes das transações financeiras e administrativas,3,0,,,,
+441,41,,,Não Preenchido,VAULT/Hashicorp ,Em andamento,,31/12/2022,"Remoção de todos os segredos no Github
+",3,0,,,,
+442,41,,,Não Preenchido,PAM/Cyberark ,Em andamento,1,31/12/2023,Redução de riscos  exposição de credenciais privilegiadas,3,0,,,,
+443,41,,,Não Preenchido,SASE/Netskope - DLP,Em andamento,1,31/12/2022,Monitoramento de Incidentes de vazamento de dados,3,0,,,,
+444,41,,,Não Preenchido,BUGBOUNTY/HackerOne ,Done,1,31/12/2022,Teste de intrusão recorrente,3,0,,,,
+445,41,,,Não Preenchido,Riscos Cibernéticos,Em andamento,1,,Imprevisibilidade,3,0,,,,
+446,41,,,Não Preenchido,SAST/Checkmark - Garantir que falhas de segurança no código sejam identificadas e corrigidas antes que entrem em produção,Em andamento,1,31/12/2022,"Monitoramento preventivo, redução de investimentos para identificação de riscos préviamente ",3,0,,,,
+447,41,,,Não Preenchido,WAF - Diminuir a superfície de ataque através de regras de proteção no acesso a URLs e APIs,Em andamento,1,30/9/2023,Aumento e-NPS,3,0,,,,
+448,41,,,Não Preenchido,Investigação de possível comprometimento de vazamento de dados - BAH / Tracepoint,Done,1,,Monitoramento de Incidentes de vazamento de dados,3,0,,,,
+449,41,,,Não Preenchido,Assessment Defense - BAH / Tracepoint,Plano de execução,2,,Monitoramento de Incidentes de vazamento de dados,3,0,,,,
