@@ -121,15 +121,15 @@ const nodeContent = (d, i, arr, state) => {
           <div style="background-color: #223324; height: 80px; box-sizing: border-box; border-radius: 10px;">
           <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
           <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:12px; width: 540px; height: 10px; font-weight: bold"> ${
-             d.data.Area
+             nulo(d.data.Area)
           } </div>
           <div style="display: flex; margin-left: 19px; margin-top: 10px; justify-content: space-between; margin-right: 30px; height: 16px; ">
               <p>Qtde de Objetivos</p>
-              <p style="font-weight: bold;">${d.data.quant_Obj}</p>
+              <p style="font-weight: bold;">${nulo(d.data.quant_Obj)}</p>
           </div>
           <div style="display: flex; margin-left: 19px; justify-content: space-between; margin-right: 30px; margin-bottom: 20px">
               <p>Qtde de Projetos</p>
-              <p style="font-weight: bold;">${d.data.Quant_Proj}</p>
+              <p style="font-weight: bold;">${nulo(d.data.Quant_Proj)}</p>
           </div>
         </div>
       </div>
@@ -138,12 +138,16 @@ const nodeContent = (d, i, arr, state) => {
   if (d.data.tipo == 1){
     return `
     <div style="background-color: #223324; height: 80px; box-sizing: border-box; border-radius: 10px;">
-          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">
-          <div style="font-size:13px;color:#08011E;margin-left:20px;margin-top:20px; width: 540px; height: 10px; font-weight: 700"> 
-            Objetivo: ${d.data.Area} </div>
-          <div style="display: flex; margin-left: 20px; justify-content: space-between; margin-right: 30px; margin-bottom: 20px; font-weight: 600; margin-top: 10px; font-size: 13px; font-family: 'Inter', sans-serif">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:${d.height}px;border-radius:10px;border: 1px solid #E4E2E9">  
+
+            <div style="display: flex; justify-content:space-between;">
+              <p style="font-size:13px;color:#08011E;margin-left:20px;margin-top:20px; height: fit-content; font-weight: 700;">Objetivo: </p>
+              <p style="font-size:13px;color:#08011E;margin-top:20px; height: fit-content; font-weight: 700; margin-right:25px;">${nulo(d.data.ObjetivoArea)}</p>
+            </div>
+
+          <div style="display: flex; margin-left: 20px; justify-content: space-between; margin-right: 30px; margin-bottom: 20px; font-weight: 600; font-size: 13px; font-family: 'Inter', sans-serif">
               <p>Qtde de Projetos</p>
-              <p style="font-weight: bold;">${d.data.Quant_Proj}</p>
+              <p style="font-weight: bold;">${nulo(d.data.Quant_Proj)}</p>
           </div>
         </div>
       </div>
@@ -153,10 +157,10 @@ const nodeContent = (d, i, arr, state) => {
     <div style="background-color: #499276; height: 80px; box-sizing: border-box; border-radius: 10px;">
           <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:90px;border-radius:10px;border: 1px solid #E4E2E9">
           <div style="font-size:15px;color:#499276;margin-left:20px;margin-top:12px; width: 220px; height: 10px; font-weight: bold""> 
-            Programa: ${d.data.Area} </div>
+            Programa: ${nulo(d.data.Area)} </div>
           <div style="display: flex; margin-left: 19px; margin-top: 23px; justify-content: space-between; margin-right: 30px; height: 16px; ">
             <p>Qtde de Projetos</p>
-              <p style="font-weight: bold;">${d.data.Quant_Proj}</p>
+              <p style="font-weight: bold;">${nulo(d.data.Quant_Proj)}</p>
           </div>
         </div>
       </div>
@@ -164,21 +168,21 @@ const nodeContent = (d, i, arr, state) => {
   if (d.data.tipo == 3){
     return `
     <div style="background-color: #499276; height: 80px; box-sizing: border-box; border-radius: 10px;">
-          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:208px;border-radius:10px;border: 1px solid #E4E2E9">
+          <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute; margin-top: 5px; margin-left:-1px;width:${d.width}px;height:fit-content;border-radius:10px;border: 1px solid #E4E2E9; max-height:500px">
           <div style="font-size:15px;color:#08011E;margin-left:20px; width: 220px; height: 10px; font-weight: bold; margin-bottom: 50px; vertical-align: middle"> <p> ${
-             d.data.ObjetivoArea
+            nulo(d.data.Obejtivo)
           } </p> </div>
           <div style="display: flex; margin-left: 19px; margin-top: 20px; justify-content: space-between; margin-right: 30px; height: 20px; ">
             <p>Previsão</p>
               <p style="font-weight: bold;">${nulo(d.data.Previsao)}</p>
           </div>
-          <div style="display: flex; flex-direction: row; text-align: right; margin-left: 19px; margin-right: 30px; height: 30px; margin-top: 20px">
+          <div style="display: flex;margin-left: 19px;margin-top: 20px;justify-content: space-between;margin-right: 30px;height: 20px;height:fit-content;text-align:right;">
               <p style="height: 5px">Resultado:</p>
-              <p style="font-weight: bold; margin-left: 5px">${d.data.Resultado_Esperado}</p>
+              <p style="font-weight: bold; margin-left: 5px">${nulo(d.data.Resultado_Esperado)}</p>
           </div>
-          <div style="display: flex; margin-left: 19px; margin-top: 15px; justify-content: space-between; margin-right: 30px; height: 16px; ">
-            <p style="height: 5px">Fase:</p>
-              <p style="font-weight: bold;">${d.data.Fase}</p>
+          <div style="display: flex; margin-left: 19px; justify-content: space-between; margin-right: 30px; height: fit-content; text-align:right; margin-bottom: 20px">
+            <p style="height: fit-content">Fase:</p>
+              <p style="font-weight: bold;">${nulo(d.data.Fase)}</p>
           </div>
        </div>
     </div>
@@ -188,7 +192,7 @@ const nodeContent = (d, i, arr, state) => {
     <div style="background-color: #223324; height: 80px; box-sizing: border-box; border-radius: 10px;">
           <div style="font-family: 'Inter', sans-serif;background-color:${color}; position:absolute;margin-top: 5px; margin-left:-1px;width:${d.width}px;height:90px;border-radius:10px;border: 1px solid #E4E2E9">
           <div style="font-size:20px;color:#08011E; text-align:center; margin-left: 20px; margin-top: 35px; width: 220px; height: 10px; font-weight: bold"> ${
-              d.data.Area
+              nulo(d.data.Area)
           } </div>
         </div>
       </div>
